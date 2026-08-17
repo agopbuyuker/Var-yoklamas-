@@ -1,0 +1,24 @@
+# Render Blueprint — bu dosya sayesinde Render "New +" -> "Blueprint" akışında
+# tüm ayarları (servis türü, başlatma komutu, kalıcı disk) otomatik okur.
+# Sen sadece ADMIN_PASSWORD değerini girip "Apply" demen yeterli.
+services:
+  - type: web
+    name: var-yoklamasi
+    runtime: node
+    plan: free
+    buildCommand: ""
+    startCommand: "node server.js"
+    autoDeploy: true
+    envVars:
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: SESSION_SECRET
+        generateValue: true
+      - key: TRUST_HTTPS
+        value: "true"
+      - key: DATA_DIR
+        value: /var/data
+    disk:
+      name: var-yoklamasi-data
+      mountPath: /var/data
+      sizeGB: 1
