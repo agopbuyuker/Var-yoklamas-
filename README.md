@@ -126,18 +126,19 @@ Tüm veriler `data/app.db` (SQLite) dosyasında, görseller `data/uploads/` klas
 
 ## Klasör yapısı
 
+Proje bilinçli olarak **tek düz klasör** (alt klasörsüz) halinde tutuldu — GitHub'ın mobil tarayıcı yükleme ekranı klasör yapısını her zaman koruyamıyor; düz yapı bu yüzden telefondan yükleme yaparken sorun çıkarmıyor.
+
 ```
 var-yoklamasi/
-├── server.js          # Ana HTTP sunucusu ve tüm yönlendirmeler (routes)
-├── lib/
-│   ├── db.js           # node:sqlite ile veritabanı katmanı
-│   ├── auth.js          # Yönetici oturum yönetimi
-│   ├── render.js         # Sunucu tarafında HTML üretimi
-│   └── utils.js          # Cookie, hash, dosya adı yardımcıları
-├── public/
-│   ├── style.css         # Tüm görsel tasarım
-│   └── app.js            # Oy verme için istemci tarafı JavaScript
-├── data/                # Çalışma zamanında oluşur: veritabanı + yüklenen görseller
+├── server.js       # Ana HTTP sunucusu ve tüm yönlendirmeler (routes)
+├── db.js           # node:sqlite ile veritabanı katmanı
+├── auth.js         # Yönetici oturum yönetimi
+├── render.js       # Sunucu tarafında HTML üretimi
+├── utils.js        # Cookie, hash, dosya adı yardımcıları
+├── style.css       # Tüm görsel tasarım
+├── app.js          # Oy verme için istemci tarafı JavaScript
+├── data/           # Çalışma zamanında oluşur: veritabanı + yüklenen görseller
+├── render.yaml      # Render Blueprint (otomatik deploy ayarları)
 ├── Dockerfile
 ├── .env.example
 └── package.json

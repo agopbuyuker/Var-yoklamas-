@@ -8,10 +8,10 @@ const { URL } = require('url');
 // Load .env if present, without any external dependency.
 loadEnvFile(path.join(__dirname, '.env'));
 
-const db = require('./lib/db');
-const auth = require('./lib/auth');
-const render = require('./lib/render');
-const { parseCookies, serializeCookie, hashIp, getClientIp, slugSafeFilename } = require('./lib/utils');
+const db = require('./db');
+const auth = require('./auth');
+const render = require('./render');
+const { parseCookies, serializeCookie, hashIp, getClientIp, slugSafeFilename } = require('./utils');
 
 const PORT = Number(process.env.PORT || 3000);
 const TRUST_HTTPS = String(process.env.TRUST_HTTPS || 'false') === 'true';
@@ -157,10 +157,10 @@ const server = http.createServer(async (req, res) => {
 
     // ---- Static assets ----
     if (req.method === 'GET' && pathname === '/style.css') {
-      return serveStaticFile(res, path.join(__dirname, 'public', 'style.css'));
+      return serveStaticFile(res, path.join(__dirname, 'style.css'));
     }
     if (req.method === 'GET' && pathname === '/app.js') {
-      return serveStaticFile(res, path.join(__dirname, 'public', 'app.js'));
+      return serveStaticFile(res, path.join(__dirname, 'app.js'));
     }
     if (req.method === 'GET' && pathname.startsWith('/uploads/')) {
       const filename = path.basename(pathname);

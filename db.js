@@ -6,7 +6,7 @@ const { DatabaseSync } = require('node:sqlite');
 
 // DATA_DIR ortam degiskeni verilirse (orn. Render/Railway kalici disk baglama
 // yolu) onu kullan; aksi halde proje icindeki ./data klasorunu kullan.
-const DATA_DIR = process.env.DATA_DIR || path.join(__dirname, '..', 'data');
+const DATA_DIR = process.env.DATA_DIR || path.join(__dirname, 'data');
 const UPLOADS_DIR = path.join(DATA_DIR, 'uploads');
 const DB_PATH = path.join(DATA_DIR, 'app.db');
 
